@@ -3,6 +3,8 @@ import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
+import java.util.Objects;
+
 public class MessageListener extends ListenerAdapter {
 
     public void onMessageReceived(MessageReceivedEvent event) {
@@ -14,6 +16,11 @@ public class MessageListener extends ListenerAdapter {
                     .queue(response /* => Message */ -> {
                         response.editMessageFormat("Pong: %d ms", System.currentTimeMillis() - time).queue();
                     });
+        }
+        if (!msg.isFromGuild() && !Objects.equals(event.getAuthor(), event.getJDA().getSelfUser())) {
+            msg.getAuthor().openPrivateChannel()
+                    .flatMap(channel -> channel.sendMessage("DM received!"))
+                    .queue();
         }
     }
 }
