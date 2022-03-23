@@ -24,7 +24,14 @@ public class MessageListener extends ListenerAdapter {
         if (!msg.isFromGuild() && !Objects.equals(sender, event.getJDA().getSelfUser())) {
             if (!userList.contains(sender)) {
                 userList.add(sender);
-                dmControllerList.add(new DMController(msg.getPrivateChannel(), "whats up?"));
+                DMController newDM = new DMController(msg.getPrivateChannel());
+                dmControllerList.add(newDM);
+                newDM.setMessage(msg.getContentRaw());
+                try {
+                    newDM.conversation();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             } else {
                 for (DMController dm : dmControllerList) {
                     if (dm.userMatch(sender)) {
