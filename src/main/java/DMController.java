@@ -127,5 +127,6 @@ public class DMController extends ListenerAdapter {
         } else {
             sendMessage("Default response.");
         }
+        // TODO: Finish conversation logic
     }
 }
