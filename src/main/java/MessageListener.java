@@ -15,12 +15,19 @@ public class MessageListener extends ListenerAdapter {
     public void onMessageReceived(MessageReceivedEvent event) {
         Message msg = event.getMessage();
         User sender = msg.getAuthor();
+
         if (msg.getContentRaw().equals("!ping")) {
             MessageChannel channel = event.getChannel();
             long time = System.currentTimeMillis();
             channel.sendMessage("Pong!") /* => RestAction<Message> */
                     .queue(response /* => Message */ -> response.editMessageFormat("Pong: %d ms", System.currentTimeMillis() - time).queue());
         }
+
+        if (msg.getContentRaw().equals("ratio") && Objects.equals(sender, event.getJDA().getSelfUser())) {
+            MessageChannel channel = event.getChannel();
+            msg.addReaction("U+2B06").queue();
+        }
+
         if (!msg.isFromGuild() && !Objects.equals(sender, event.getJDA().getSelfUser())) {
             if (!userList.contains(sender)) {
                 userList.add(sender);
@@ -45,9 +52,6 @@ public class MessageListener extends ListenerAdapter {
                     }
                 }
             }
-//            msg.getAuthor().openPrivateChannel()
-//                    .flatMap(channel -> channel.sendMessage("DM received!"))
-//                    .queue();
         }
     }
 }
