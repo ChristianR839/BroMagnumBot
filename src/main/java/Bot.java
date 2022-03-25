@@ -11,11 +11,6 @@ public class Bot {
 
         WindowActions wActs = new WindowActions();
 
-//        MainForm mainForm = new MainForm();
-//        wActs.displayWindow(mainForm);
-
-        // TODO: The program will not run if the window is initialized
-
         JDABuilder.createLight(r.token,
                         GatewayIntent.GUILD_MESSAGES,
                         GatewayIntent.GUILD_MESSAGE_REACTIONS,
@@ -23,5 +18,10 @@ public class Bot {
                 .addEventListeners(new MessageListener())
                 // .setActivity(Activity.of(Activity.ActivityType.CUSTOM_STATUS, "this cool cat is worth a chat"))
                 .build();
+
+        MainForm mainForm = new MainForm();
+        wActs.displayWindow(mainForm);
+
+        // TODO: Mirror the console output to the text box on the GUI
     }
 }
