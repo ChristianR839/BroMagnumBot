@@ -8,7 +8,7 @@ import javax.security.auth.login.LoginException;
 public class Bot {
 
     private JDA jda;
-    private Resources r = new Resources();
+    private final Resources r = new Resources();
 
     public Bot(){
         try {
