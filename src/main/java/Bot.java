@@ -17,7 +17,7 @@ public class Bot {
                             GatewayIntent.GUILD_MESSAGE_REACTIONS,
                             GatewayIntent.DIRECT_MESSAGES)
                     .addEventListeners(new MessageListener())
-                    .setActivity(Activity.watching("this cool cat is worth a chat"))
+                    .setActivity(Activity.watching("this cool cat's worth a chat"))
                     .build();
         } catch (LoginException e) {
             e.printStackTrace();
@@ -32,7 +32,7 @@ public class Bot {
                             GatewayIntent.GUILD_MESSAGE_REACTIONS,
                             GatewayIntent.DIRECT_MESSAGES)
                     .addEventListeners(new MessageListener())
-                    .setActivity(Activity.watching("this cool cat is worth a chat"))
+                    .setActivity(Activity.watching("this cool cat's worth a chat"))
                     .build();
         } catch (LoginException e){
             e.printStackTrace();
