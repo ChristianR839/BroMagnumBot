@@ -1,14 +1,10 @@
-import net.dv8tion.jda.api.JDA;
-import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.PrivateChannel;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.exceptions.ErrorResponseException;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import net.dv8tion.jda.api.requests.RestAction;
 
 import java.time.LocalDate;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class DMController extends ListenerAdapter {
@@ -20,12 +16,12 @@ public class DMController extends ListenerAdapter {
     private final LinkedList<Integer> flagSent = new LinkedList<Integer>();
     private final LinkedList<Integer> genResponse = new LinkedList<Integer>();
     private boolean flagGot = false;
-    private Resources r = new Resources();
+    private final Resources r = new Resources();
 
     public DMController(PrivateChannel channel) {
         this.user = channel.getUser();
         this.channel = channel;
-        System.out.println("Communication innitiated with " + user.getAsTag());
+        System.out.println("Communication initiated with " + user.getAsTag());
     }
 
     public boolean userMatch(User user) {

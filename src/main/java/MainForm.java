@@ -14,12 +14,9 @@ public class MainForm extends JFrame {
 
     public MainForm() throws LoginException {
         setContentPane(contentPane);
-        // setModal(true);
         getRootPane().setDefaultButton(restart);
 
         scrArea.getVerticalScrollBar().setValue(scrArea.getVerticalScrollBar().getMaximum());
-
-        //outputPane.getVerticalScrollBar().setValue(outputPane.getVerticalScrollBar().getMaximum());
 
         PrintStream printStream = new PrintStream(new ConsoleOut(consoleOut));
         System.setOut(printStream);
@@ -56,24 +53,11 @@ public class MainForm extends JFrame {
     }
 
     private void onOK() {
-        // add your code here
         bot.restart();
     }
 
     private void onCancel() {
-        // add your code here if necessary
         dispose();
         System.exit(0);
     }
-
-
-//    public void setData(ConsoleOut data) {
-//    }
-//
-//    public void getData(ConsoleOut data) {
-//    }
-//
-//    public boolean isModified(ConsoleOut data) {
-//        return false;
-//    }
 }

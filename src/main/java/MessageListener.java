@@ -9,8 +9,8 @@ import java.util.Objects;
 
 public class MessageListener extends ListenerAdapter {
 
-    private LinkedList<User> userList = new LinkedList<User>();
-    private LinkedList<DMController> dmControllerList = new LinkedList<DMController>();
+    private final LinkedList<User> userList = new LinkedList<User>();
+    private final LinkedList<DMController> dmControllerList = new LinkedList<DMController>();
 
     public void onMessageReceived(MessageReceivedEvent event) {
         Message msg = event.getMessage();

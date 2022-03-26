@@ -8,7 +8,7 @@ public class WindowActions {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }
         catch (UnsupportedLookAndFeelException | IllegalAccessException | InstantiationException | ClassNotFoundException e) {
-            // handle exception
+            e.printStackTrace();
         }
     }
 
