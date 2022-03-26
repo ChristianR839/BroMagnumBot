@@ -20,6 +20,7 @@ public class DMController extends ListenerAdapter {
     private final LinkedList<Integer> flagSent = new LinkedList<Integer>();
     private final LinkedList<Integer> genResponse = new LinkedList<Integer>();
     private boolean flagGot = false;
+    private Resources r = new Resources();
 
     public DMController(PrivateChannel channel) {
         this.user = channel.getUser();
@@ -203,7 +204,7 @@ public class DMController extends ListenerAdapter {
                 }
             }
         } else {
-            sendMessage("I give up, you're impossible to talk to. The flag is: <the flag>");
+            sendMessage("I give up, you're impossible to talk to. The flag is: " + r.flag);
             flagGot = true;
             System.out.println("Flag granted to " + user.getAsTag());
         }
