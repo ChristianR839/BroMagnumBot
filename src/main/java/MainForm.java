@@ -1,20 +1,33 @@
+import javax.security.auth.login.LoginException;
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.PrintStream;
 
-public class MainForm extends JDialog {
+public class MainForm extends JFrame {
     private JPanel contentPane;
-    private JButton buttonOK;
+    private JButton restart;
     private JButton buttonCancel;
-    private JTextPane consoleOut;
+    private JTextArea consoleOut;
+    private JScrollPane scrArea;
 
-    public MainForm() {
+    private Bot bot;
+
+    public MainForm() throws LoginException {
         setContentPane(contentPane);
-        setModal(true);
-        getRootPane().setDefaultButton(buttonOK);
+        // setModal(true);
+        getRootPane().setDefaultButton(restart);
 
-        ConsoleOutputCapturer outputCapturer = new ConsoleOutputCapturer();
+        scrArea.getVerticalScrollBar().setValue(scrArea.getVerticalScrollBar().getMaximum());
 
-        buttonOK.addActionListener(new ActionListener() {
+        //outputPane.getVerticalScrollBar().setValue(outputPane.getVerticalScrollBar().getMaximum());
+
+        PrintStream printStream = new PrintStream(new ConsoleOut(consoleOut));
+        System.setOut(printStream);
+        System.setErr(printStream);
+
+        bot = new Bot();
+
+        restart.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();
             }
@@ -44,11 +57,23 @@ public class MainForm extends JDialog {
 
     private void onOK() {
         // add your code here
-        dispose();
+        bot.restart();
     }
 
     private void onCancel() {
         // add your code here if necessary
         dispose();
+        System.exit(0);
     }
+
+
+//    public void setData(ConsoleOut data) {
+//    }
+//
+//    public void getData(ConsoleOut data) {
+//    }
+//
+//    public boolean isModified(ConsoleOut data) {
+//        return false;
+//    }
 }

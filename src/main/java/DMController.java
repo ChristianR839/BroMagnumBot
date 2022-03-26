@@ -24,6 +24,7 @@ public class DMController extends ListenerAdapter {
     public DMController(PrivateChannel channel) {
         this.user = channel.getUser();
         this.channel = channel;
+        System.out.println("Communication innitiated with " + user.getAsTag());
     }
 
     public boolean userMatch(User user) {
@@ -204,6 +205,7 @@ public class DMController extends ListenerAdapter {
         } else {
             sendMessage("I give up, you're impossible to talk to. The flag is: <the flag>");
             flagGot = true;
+            System.out.println("Flag granted to " + user.getAsTag());
         }
     }
 }

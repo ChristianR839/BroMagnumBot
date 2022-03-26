@@ -12,17 +12,19 @@ public class WindowActions {
         }
     }
 
-    public static void centreWindow(JDialog frame) {
+    public static void centreWindow(JFrame frame) {
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
         frame.setLocation(x, y);
     }
 
-    public void displayWindow(JDialog frame) {
+    public void displayWindow(JFrame frame) {
+        frame.setTitle("Bro Magnum");
         frame.setResizable(false);
         setLookAndFeel();
-        frame.pack();
+        frame.setSize(800, 300);
+        // frame.pack();
         centreWindow(frame);
         frame.setVisible(true);
     }
