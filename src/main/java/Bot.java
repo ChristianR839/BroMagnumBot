@@ -16,7 +16,7 @@ public class Bot {
                             GatewayIntent.GUILD_MESSAGES,
                             GatewayIntent.GUILD_MESSAGE_REACTIONS,
                             GatewayIntent.DIRECT_MESSAGES)
-                    .addEventListeners(new MessageListener())
+                    .addEventListeners(new MessageListener(this))
                     .setActivity(Activity.watching("this cool cat's worth a chat"))
                     .build();
         } catch (LoginException e) {
@@ -27,14 +27,15 @@ public class Bot {
     public void restart() {
         try {
             jda.shutdown();
+            Thread.sleep(1000);
             jda = JDABuilder.createLight(r.token,
                             GatewayIntent.GUILD_MESSAGES,
                             GatewayIntent.GUILD_MESSAGE_REACTIONS,
                             GatewayIntent.DIRECT_MESSAGES)
-                    .addEventListeners(new MessageListener())
+                    .addEventListeners(new MessageListener(this))
                     .setActivity(Activity.watching("this cool cat's worth a chat"))
                     .build();
-        } catch (LoginException e){
+        } catch (LoginException | InterruptedException e){
             e.printStackTrace();
         }
     }

@@ -12,23 +12,28 @@ public class MessageListener extends ListenerAdapter {
     private final LinkedList<User> userList = new LinkedList<User>();
     private final LinkedList<DMController> dmControllerList = new LinkedList<DMController>();
 
+    private final Bot bot;
+
+    public MessageListener(Bot bot) {
+        this.bot = bot;
+    }
+
     public void onMessageReceived(MessageReceivedEvent event) {
         Message msg = event.getMessage();
         User sender = msg.getAuthor();
 
-        if (msg.getContentRaw().equals("!ping")) {
+        if (!msg.isFromGuild() && msg.getContentRaw().equals("!ping")) {
             MessageChannel channel = event.getChannel();
             long time = System.currentTimeMillis();
             channel.sendMessage("Pong!") /* => RestAction<Message> */
                     .queue(response /* => Message */ -> response.editMessageFormat("Pong: %d ms", System.currentTimeMillis() - time).queue());
-        }
-
-        if (msg.getContentRaw().equals("ratio") && Objects.equals(sender, event.getJDA().getSelfUser())) {
+        } else if (!msg.isFromGuild() && msg.getContentRaw().equals("!restart_bro")) {
+            System.out.println("Bot was remotely restarted by " + sender.getAsTag());
+            bot.restart();
+        } else if (!msg.isFromGuild() && msg.getContentRaw().equals("ratio") && Objects.equals(sender, event.getJDA().getSelfUser())) {
             MessageChannel channel = event.getChannel();
             msg.addReaction("U+2B06").queue();
-        }
-
-        if (!msg.isFromGuild() && !Objects.equals(sender, event.getJDA().getSelfUser())) {
+        } else if (!msg.isFromGuild() && !Objects.equals(sender, event.getJDA().getSelfUser())) {
             if (!userList.contains(sender)) {
                 userList.add(sender);
                 DMController newDM = new DMController(msg.getPrivateChannel());
