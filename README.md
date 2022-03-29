@@ -14,9 +14,9 @@ Bro Magnum is a Discord bot that utilizes the JDA (Java Discord API) (https://gi
 
 3.  When opened, Bro Magnum will connect to Discord servers and appear online
       
-      3a. There may be a scenario where this no longer works. Discord bots each have a unique token and, should that token be reset either manually or automatically, your version of the application will cease to function. If this happens, contact @ChristianR839 for a new BroMagnum.jar.
+      3a. There may be a scenario where this no longer works. Discord bots each have a unique token and, should that token be reset either manually or automatically, your version of the application will cease to function. If this happens, contact ChristianR839 for a new BroMagnum.jar.
       
-      3b. The current token for Bro Maagnum cannot be found online as Discord will automatically reset its token, should it be discovered on the internet.
+      3b. The current token for Bro Magnum cannot be found online as Discord will automatically reset its token, should it be discovered on the internet.
 
 4.  While the application is open, the bot is online and will remain that way until interrupted.
       
