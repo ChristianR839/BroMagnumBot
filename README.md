@@ -20,19 +20,19 @@ Bro Magnum is a Discord bot that utilizes the JDA (Java Discord API) (https://gi
       
       4a. The console output is viewable in the 'Console Out' text area. There is no option for input.
           
-          • When the following message appears, the bot has successfully connected to the Discord servers:
-            `[JDA MainWS-ReadThread] INFO JDA - Finished Loading!`
+          When the following message appears, the bot has successfully connected to the Discord servers:
+            [JDA MainWS-ReadThread] INFO JDA - Finished Loading!
       
       4b. There are two buttons on the bottom right of the window.
           
-          • 'Restart - Will disconnect the bot from the Discord servers and reconnect it automatically.
+          Restart - Will disconnect the bot from the Discord servers and reconnect it automatically.
           
-          • 'Close' - Will disconnect the bot from the Discord servers and close the application.
+          Close - Will disconnect the bot from the Discord servers and close the application.
       
       4c. There is a list of commands on the bottom left of the window that can be used in a direct message (on Discord) with this bot.
           
-          • '!ping' - Will ping the bot and return its response time.
+          !ping - Will ping the bot and return its response time.
           
-          • '!restart_bro' - Will restart the bot remotely, without the need to use the application.
+          !restart_bro - Will restart the bot remotely, without the need to use the application.
 
 5. Any action that closes the application will disconnect the bot from the Discord servers.
