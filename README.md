@@ -41,10 +41,10 @@ Bro Magnum is a Discord bot that utilizes the JDA (Java Discord API) (https://gi
 
 ***To Invite Bro Magnum to Your Server***
 
-**Note:** If you want the existence of Bro Magnum in your server to be a secret, be sure to change the System Messages Channel on your server *OR* disable the "Send a random welcome message when someone joins the server" setting. Both options can be found at Your Server > Server Settings > Overview > System Messages Channel
-
 1. Contact ChristianR839 for an invite link
 
 2. Open the link and allow the desired permissions
 
 3. The bot will join the server you direct it to and, as long as it is online, will fulfill its purpose
+
+**Note:** If you want the existence of Bro Magnum in your server to be a secret, be sure to change the System Messages Channel on your server *OR* disable the "Send a random welcome message when someone joins the server" setting. Both options can be found at Your Server > Server Settings > Overview > System Messages Channel
