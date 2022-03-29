@@ -1,6 +1,6 @@
 # BroMagnumBot
 
-Bro Magnum is a Discord bot that utilizes the JDA (Java Discord API) (https://github.com/DV8FromTheWorld/JDA). Its purpose is to provide WPI CS4401 students with a flag given they direct message (DM) the bot while it is online and certain conditions are met.
+Bro Magnum is a Discord bot that utilizes the JDA (Java Discord API) (https://github.com/DV8FromTheWorld/JDA). Its purpose is to provide WPI CS4401 students with a flag given they direct message (DM) the bot while it is online and certain conditions are met
 
 ***Requirements***
 
@@ -14,27 +14,37 @@ Bro Magnum is a Discord bot that utilizes the JDA (Java Discord API) (https://gi
 
 3.  When opened, Bro Magnum will connect to Discord servers and appear online
       
-      3a. There may be a scenario where this no longer works. Discord bots each have a unique token and, should that token be reset either manually or automatically, your version of the application will cease to function. If this happens, contact ChristianR839 for a new BroMagnum.jar.
+      3a. There may be a scenario where this no longer works. Discord bots each have a unique token and, should that token be reset either manually or automatically, your version of the application will cease to function. If this happens, contact ChristianR839 for a new BroMagnum.jar
       
-      3b. The current token for Bro Magnum cannot be found online as Discord will automatically reset its token, should it be discovered on the internet.
+      3b. The current token for Bro Magnum cannot be found online as Discord will automatically reset its token, should it be discovered on the internet
 
-4.  While the application is open, the bot is online and will remain that way until interrupted.
+4.  While the application is open, the bot is online and will remain that way until interrupted
       
-      4a. The console output is viewable in the 'Console Out' text area. There is no option for input.
+      4a. The console output is viewable in the 'Console Out' text area. There is no option for input
           
           When the following message appears, the bot has successfully connected to the Discord servers:
             [JDA MainWS-ReadThread] INFO JDA - Finished Loading!
       
-      4b. There are two buttons on the bottom right of the window.
+      4b. There are two buttons on the bottom right of the window
           
-          Restart - Will disconnect the bot from the Discord servers and reconnect it automatically.
+          Restart - Will disconnect the bot from the Discord servers and reconnect it automatically
           
-          Close - Will disconnect the bot from the Discord servers and close the application.
+          Close - Will disconnect the bot from the Discord servers and close the application
       
-      4c. There is a list of commands on the bottom left of the window that can be used in a direct message (on Discord) with this bot.
+      4c. There is a list of commands on the bottom left of the window that can be used in a direct message (on Discord) with this bot
           
-          !ping - Will ping the bot and return its response time.
+          !ping - Will ping the bot and return its response time
           
-          !restart_bro - Will restart the bot remotely, without the need to use the application.
+          !restart_bro - Will restart the bot remotely, without the need to use the application
 
-5. Any action that closes the application will disconnect the bot from the Discord servers.
+5. Any action that closes the application will disconnect the bot from the Discord servers
+
+***To Invite Bro Magnum to Your Server***
+
+**Note:** If you want the existence of Bro Magnum in your server to be a secret, be sure to change the System Messages Channel on your server *OR* disable the "Send a random welcome message when someone joins the server" setting. Both options can be found at Your Server > Server Settings > Overview > System Messages Channel
+
+1. Contact ChristianR839 for an invite link
+
+2. Open the link and allow the desired permissions
+
+3. The bot will join the server you direct it to and, as long as it is online, will fulfill its purpose
