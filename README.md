@@ -2,10 +2,12 @@
 
 Bro Magnum is a Discord bot that utilizes the JDA (Java Discord API) (https://github.com/DV8FromTheWorld/JDA). Its purpose is to provide WPI CS4401 students with a flag given they direct message (DM) the bot while it is online and certain conditions are met.
 
-*Requirements*
+***Requirements***
+
 • Java Runtime Environment 1.8.0 or higher (https://www.java.com/en/download/manual.jsp)
 
-*Installation/Use*
+***Installation/Use***
+
 1.  Acquire the BroMagnum.jar file (not found in this repository)
 
 2.  Open the BroMagnum.jar file with Java Runtime Environment
