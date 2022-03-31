@@ -2,13 +2,15 @@
 
 Bro Magnum is a Discord bot that utilizes the JDA (Java Discord API) (https://github.com/DV8FromTheWorld/JDA). Its purpose is to provide WPI CS4401 students with a flag given they direct message (DM) the bot while it is online and certain conditions are met
 
-***Requirements***
+
+## Requirements
 
 • Java Runtime Environment 1.8.0 or higher (https://www.java.com/en/download/manual.jsp)
 
 • IntelliJ IDEA 2021.3.3 or higher (https://www.jetbrains.com/idea/download/) or any other Java IDE of choice
 
-***Creating a Discord Bot***
+
+## Creating a Discord Bot
 
 1.  Navigate to the Discord Developer Portal > Applications page (https://discord.com/developers/applications). This will require logging in with a Discord account. If you do not have one, create one to proceed
       
@@ -38,7 +40,8 @@ Bro Magnum is a Discord bot that utilizes the JDA (Java Discord API) (https://gi
 
 **Note:** Discord will automatically reset your bot's token, should it be discovered on the internet
 
-***Setting Up in IntelliJ IDEA (Not/Semi Applicable to other Java IDEs)***
+
+## Setting Up in IntelliJ IDEA (Not Applicable to other Java IDEs)
 
 1.  Open IntelliJ IDEA
 
@@ -71,7 +74,7 @@ Bro Magnum is a Discord bot that utilizes the JDA (Java Discord API) (https://gi
             String flag = "<flag>";
           }
      
-      6d. Populate the "token" and "flag" fields with values that are appropriate for your use. See ***Creating a Discord Bot*** for more information about Discord bot tokens
+      6d. Populate the "token" and "flag" fields with values that are appropriate for your use. See ***Creating a Discord Bot*** for more information about obtaining your bot's token
       
       6e. Build the project to assure that this new file has been created and implemented correctly
 
@@ -87,7 +90,37 @@ Bro Magnum is a Discord bot that utilizes the JDA (Java Discord API) (https://gi
       
       ![image](https://user-images.githubusercontent.com/46659572/160954095-5920613c-5d24-411d-b0ad-1cfa53bc7861.png)
 
-***Using the Interface***
+
+## Creating an Executable .jar in IntelliJ IDEA (Not Applicable to other Java IDEs)
+
+1.  Navigate to "File > Project Structure"
+
+2.  Under the "Project Settings" header, select "Artifacts"
+
+3.  If something is already in the list as pictured below, no action is required as long as the settings are as explained in step 4:
+
+![image](https://user-images.githubusercontent.com/46659572/160957276-25ad78dd-43ed-402b-ae10-cf277927d6db.png)
+
+4.  To create a new artifact, select the plus (+) button above the list pictured above. Choose "JAR > From modules with dependencies..."
+
+5.  Set the Main Class to "Main.java" and any other preferences
+
+![image](https://user-images.githubusercontent.com/46659572/160957649-2c0ece46-93a1-46aa-9e88-1e478995bee3.png)
+
+6.  Be sure to select "Apply" / "OK" to save your changes
+
+7.  Navigate to "Build > Build Artifacts... > Build" to build the executable .jar
+
+8.  There should now be an executable .jar at this directory (or one similar, due to naming differences):
+
+          ...\BroMagnumBot-Tutorial\out\artifacts\BroMagnum_jar\BroMagnumBot.main.jar
+          
+9.  Open it to test that it runs. If this window appears, the executable .jar has been created successfully:
+
+![image](https://user-images.githubusercontent.com/46659572/160954095-5920613c-5d24-411d-b0ad-1cfa53bc7861.png)
+
+
+## Using the Interface
 
 1.  Open the BroMagnum.jar file with Java Runtime Environment
 
@@ -118,12 +151,41 @@ Bro Magnum is a Discord bot that utilizes the JDA (Java Discord API) (https://gi
 
 4. Any action that closes the application will disconnect the bot from the Discord servers
 
-***To Invite Bro Magnum to Your Server***
 
-1. Contact ChristianR839 for an invite link
+## To Invite Bro Magnum to Your Server
 
-2. Open the link and allow the desired permissions
+1. Navigate to the Discord Developer Portal > Applications page (https://discord.com/developers/applications) and select your bot
 
-3. The bot will join the server you direct it to and, as long as it is online, will fulfill its purpose
+2. Navigate to "OAuth2 > URL Generator"
+
+![image](https://user-images.githubusercontent.com/46659572/160958304-3a0167f2-830d-4958-ad0c-4bd938b61d71.png)
+
+3.  To create an invite link, your bot needs to know what scopes are required. Check the following boxes:
+
+        bot
+  
+        applications.commands
+
+4.  Then, select the permissions that the bot will need. A typical setup may include:
+
+        Read Messages/View Channels
+        
+        Send Messages
+        
+        Send Messages in Threads
+        
+        Embed Links
+        
+        Attach Files
+        
+        Read Message History
+        
+        Add Reactions
+        
+5.  Once your desired permissions have been selected, copy the URL that is generated at the bottom of the window
+
+6.  Upon opening it, Discord will prompt you to invite your bot to a server in which you have permission to do so
+
+7. The bot will join the server you direct it to and, as long as it is online, will fulfill its purpose
 
 **Note:** If you want the existence of Bro Magnum in your server to be a secret, be sure to change the System Messages Channel on your server *OR* disable the "Send a random welcome message when someone joins the server" setting. Both options can be found at Your Server > Server Settings > Overview > System Messages Channel
