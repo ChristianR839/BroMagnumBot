@@ -8,6 +8,36 @@ Bro Magnum is a Discord bot that utilizes the JDA (Java Discord API) (https://gi
 
 • IntelliJ IDEA 2021.3.3 or higher (https://www.jetbrains.com/idea/download/) or any other Java IDE of choice
 
+***Creating a Discord Bot***
+
+1.  Navigate to the Discord Developer Portal > Applications page (https://discord.com/developers/applications). This will require logging in with a Discord account. If you do not have one, create one to proceed
+      
+2.  Select the "New Application" button at the top right of the window next to your user icon
+
+![image](https://user-images.githubusercontent.com/46659572/160954773-57cc11c0-a218-44f6-975f-f5c218da374c.png)
+
+3.  Create a new application, giving it any name you choose. This can be changed later
+
+![image](https://user-images.githubusercontent.com/46659572/160954873-4cbf1e61-27f9-4b5d-bfc0-56bee27cedcc.png)
+
+4.  Your application has been created, but it is not a bot just yet. Navigate to the "Bot" tab on the left side of the window
+
+![image](https://user-images.githubusercontent.com/46659572/160955005-81d1558f-2690-48c2-9dcc-53335423543f.png)
+
+5.  Add a bot user by selecting the "Add Bot" button on the right of the window. Note that *"This action is irreversible (because robots are too cool to destroy)."*
+
+![image](https://user-images.githubusercontent.com/46659572/160955121-3b4f6dc6-b144-40a5-ade3-0eecaf5d25ed.png)
+
+6.  Once the bot user has been created, feel free to set the icon, rename the bot, and/or alter any settings that are applicable to your scenario
+
+7.  **Important:** Discord bots each have their own unique token. To get your bot's token, select the "Reset Token" button just to the right of your bot's icon. This may prompt you to enter a 2-factor authentication code. If it does not, I recommend turning on 2FA for your Discord account to increase security. More information on this can be found here (https://support.discord.com/hc/en-us/articles/219576828-Setting-up-Two-Factor-Authentication)
+
+![image](https://user-images.githubusercontent.com/46659572/160955437-d012790a-cbdf-42ca-9ee4-bc33c86bcdad.png)
+
+8.  This token can be copied to your clipboard and implemented into the bot. If this is not done, the bot will not function
+
+**Note:** Discord will automatically reset your bot's token, should it be discovered on the internet
+
 ***Setting Up in IntelliJ IDEA (Not/Semi Applicable to other Java IDEs)***
 
 1.  Open IntelliJ IDEA
