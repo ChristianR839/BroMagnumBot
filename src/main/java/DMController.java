@@ -160,7 +160,7 @@ public class DMController extends ListenerAdapter {
                 sendMessage("You got the flag, right? Ask me about something else. Maybe comics?");
             } else if (sentHas("comic")) {
                 String url = "https://www.gocomics.com/garfield/" + comicDate();
-                sendMessage(url);
+                sendMessage("here's a comic for you. it's one of my favorites\n" + url);
             } else if (sentHas("garfield")) {
                 String url = "https://www.gocomics.com/garfield/" + comicDate();
                 sendMessage(url);
