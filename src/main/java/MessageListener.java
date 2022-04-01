@@ -23,6 +23,7 @@ public class MessageListener extends ListenerAdapter {
 
     private final LinkedList<User> userList = new LinkedList<User>();
     private final LinkedList<DMController> dmControllerList = new LinkedList<DMController>();
+    private final ImageController img = new ImageController();
 
     private final Bot bot;
 
@@ -66,51 +67,6 @@ public class MessageListener extends ListenerAdapter {
     public String randomize(String url) {
         ThreadLocalRandom random = ThreadLocalRandom.current();
         return url + "&" + random.nextInt() + "=" + random.nextInt();
-    }
-
-    public void catPic(MessageChannel channel) {
-        EmbedBuilder cat = new EmbedBuilder();
-        cat.setColor(0xffa502);
-        cat.setImage(randomize("http://thecatapi.com/api/images/get?format=src&type=png"));
-        channel.sendMessageEmbeds(cat.build()).queue();
-    }
-
-    public void meme(MessageChannel channel) {
-
-        JSONParser parser = new JSONParser();
-
-        String postLink = "";
-        String title = "";
-        String url = "";
-
-        try {
-            URL memeUrl = new URL("https://meme-api.herokuapp.com/gimme/programmerhumor/");
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(memeUrl.openConnection().getInputStream()));
-
-            String lines;
-
-            while ((lines = bufferedReader.readLine()) != null) {
-                JSONArray array = new JSONArray();
-                array.add(parser.parse(lines));
-
-                for (Object o : array) {
-                    JSONObject jsonObject = (JSONObject) o;
-
-                    postLink = (String) jsonObject.get("postLink");
-                    title = (String) jsonObject.get("title");
-                    url = (String) jsonObject.get("url");
-                }
-            }
-            bufferedReader.close();
-
-            EmbedBuilder meme = new EmbedBuilder();
-            meme.setColor(0xffa502);
-            meme.setTitle(title, postLink);
-            meme.setImage(url);
-            channel.sendMessageEmbeds(meme.build()).queue();
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
-        }
     }
 
     public void onMessageReceived(MessageReceivedEvent event) {
@@ -158,14 +114,14 @@ public class MessageListener extends ListenerAdapter {
             channel.sendMessage(url).queue();
         } else if (msg.getContentRaw().equals("!cat") && !Objects.equals(sender, event.getJDA().getSelfUser())) {
             MessageChannel channel = event.getChannel();
-            catPic(channel);
+            img.catPic(channel);
         } else if (msg.getContentRaw().equals("!meme") && !Objects.equals(sender, event.getJDA().getSelfUser())) {
             MessageChannel channel = event.getChannel();
-            meme(channel);
+            img.meme(channel);
         } else if (msg.getContentRaw().contains("954162794176061541") && !Objects.equals(sender, event.getJDA().getSelfUser())) {
             MessageChannel channel = event.getChannel();
 
-            int response = 11; //random(1, 10);
+            int response = random(1, 12);
 
             switch (response) {
                 case 1:
@@ -207,6 +163,9 @@ public class MessageListener extends ListenerAdapter {
                     break;
                 case 12:
                     channel.sendMessage("would you like to see a '!cat' ?").queue();
+                    break;
+                case 13:
+                    channel.sendMessage("use 'meme!' to see something you might find funny").queue();
                     break;
             }
         }
