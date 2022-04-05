@@ -109,7 +109,7 @@ public class WordleController extends ListenerAdapter {
 
         // Set time of first Wordle
         // NOTE: Uses 24h clock
-        ZonedDateTime nextFirstWordle = now.withHour(12).withMinute(00).withSecond(0);
+        ZonedDateTime nextFirstWordle = now.withHour(12).withMinute(0).withSecond(0);
 
         // If it's past the time, schedule the Wordle for the next day
         if (now.compareTo(nextFirstWordle) > 0) {
