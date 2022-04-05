@@ -91,9 +91,6 @@ public class WordleController extends ListenerAdapter {
         return "-";
     }
 
-    // come up with the list of words ourselves
-    // calendar for dates with shirts
-
     public String wordleMessage() {
         String wordleCode = getWordFromFile();
         if (!wordleCode.equals("-")) {
