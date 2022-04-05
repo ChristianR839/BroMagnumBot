@@ -16,7 +16,7 @@ public class Bot {
                             GatewayIntent.GUILD_MESSAGES,
                             GatewayIntent.GUILD_MESSAGE_REACTIONS,
                             GatewayIntent.DIRECT_MESSAGES)
-                    .addEventListeners(new MessageListener(this))
+                    .addEventListeners(new MessageListener(this, r), new WordleController(r))
                     .setActivity(Activity.watching("this cool cat's worth a chat"))
                     .build();
         } catch (LoginException e) {
@@ -32,7 +32,7 @@ public class Bot {
                             GatewayIntent.GUILD_MESSAGES,
                             GatewayIntent.GUILD_MESSAGE_REACTIONS,
                             GatewayIntent.DIRECT_MESSAGES)
-                    .addEventListeners(new MessageListener(this))
+                    .addEventListeners(new MessageListener(this, r), new WordleController(r))
                     .setActivity(Activity.watching("this cool cat's worth a chat"))
                     .build();
         } catch (LoginException | InterruptedException e){

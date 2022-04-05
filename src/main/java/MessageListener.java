@@ -26,9 +26,11 @@ public class MessageListener extends ListenerAdapter {
     private final ImageController img = new ImageController();
 
     private final Bot bot;
+    private final Resources r;
 
-    public MessageListener(Bot bot) {
+    public MessageListener(Bot bot, Resources r) {
         this.bot = bot;
+        this.r = r;
     }
 
     public int random(int min, int max) {
@@ -108,6 +110,13 @@ public class MessageListener extends ListenerAdapter {
                     }
                 }
             }
+        } else if (msg.getContentRaw().equals("!!new_feats_message!!") && !Objects.equals(sender, event.getJDA().getSelfUser())) {
+            msg.delete().queue();
+            MessageChannel channel = event.getChannel();
+            channel.sendMessage("hey, @everyone, just want to let you know that i have some new commands!\n"
+                + "   • !cat - receive a random image of a cat\n"
+                + "   • !meme - receive a random meme from the r/ProgrammerHumor subreddit\n"
+                + "   • !comic - receive a random comic of your favorite lasagna-loving monday-hating feline").queue();
         } else if (msg.getContentRaw().equals("!comic") && !Objects.equals(sender, event.getJDA().getSelfUser())) {
             String url = "https://www.gocomics.com/garfield/" + comicDate();
             MessageChannel channel = event.getChannel();

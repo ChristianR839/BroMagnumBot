@@ -19,8 +19,8 @@ public class MainForm extends JFrame {
         scrArea.getVerticalScrollBar().setValue(scrArea.getVerticalScrollBar().getMaximum());
 
         PrintStream printStream = new PrintStream(new ConsoleOut(consoleOut));
-        System.setOut(printStream);
-        System.setErr(printStream);
+        // System.setOut(printStream);
+        // System.setErr(printStream);
 
         bot = new Bot();
 

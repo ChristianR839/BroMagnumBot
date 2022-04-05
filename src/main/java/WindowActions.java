@@ -23,7 +23,7 @@ public class WindowActions {
         frame.setTitle("Bro Magnum");
         frame.setResizable(false);
         setLookAndFeel();
-        frame.setSize(800, 300);
+        frame.setSize(1000, 300);
         // frame.pack();
         centreWindow(frame);
         frame.setVisible(true);
