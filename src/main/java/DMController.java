@@ -84,8 +84,10 @@ public class DMController extends ListenerAdapter {
     public int flagResponseNum() {
         int send = 0;
         do {
+            System.out.println("IN FLAG LOOP");
             send = random(1, 10);
         } while (flagSent.contains(send));
+        System.out.println("OUT OF FLAG LOOP");
         flagSent.add(send);
         return send;
     }
@@ -93,8 +95,13 @@ public class DMController extends ListenerAdapter {
     public int genResponseNum() {
         int send = 0;
         do {
+            System.out.println("IN GENERAL LOOP");
+            if (genResponse.size() >= 10) {
+                genResponse.clear();
+            }
             send = random(1, 10);
         } while (genResponse.contains(send));
+        System.out.println("OUT OF GENERAL LOOP");
         genResponse.add(send);
         return send;
     }
