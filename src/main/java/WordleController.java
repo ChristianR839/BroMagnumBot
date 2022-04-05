@@ -9,9 +9,11 @@ import java.io.*;
 import java.time.Duration;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 public class WordleController extends ListenerAdapter {
@@ -102,6 +104,11 @@ public class WordleController extends ListenerAdapter {
         }
     }
 
+    public String randomize(String url) {
+        ThreadLocalRandom random = ThreadLocalRandom.current();
+        return url + "&" + random.nextInt() + "=" + random.nextInt();
+    }
+
     public void onReady(@NotNull ReadyEvent event) {
 
         // Get current time
@@ -109,7 +116,7 @@ public class WordleController extends ListenerAdapter {
 
         // Set time of first Wordle
         // NOTE: Uses 24h clock
-        ZonedDateTime nextFirstWordle = now.withHour(12).withMinute(0).withSecond(0);
+        ZonedDateTime nextFirstWordle = now.withHour(13).withMinute(10).withSecond(0);
 
         // If it's past the time, schedule the Wordle for the next day
         if (now.compareTo(nextFirstWordle) > 0) {
@@ -130,7 +137,8 @@ public class WordleController extends ListenerAdapter {
             for (Guild guild : jda.getGuilds()) {
                 EmbedBuilder wordle = new EmbedBuilder();
                 wordle.setColor(0xffa502);
-                wordle.setTitle("Today's Wordle", wordleLink);
+                wordle.setTitle("Walldle " + now.format(DateTimeFormatter.ISO_LOCAL_DATE), wordleLink);
+                wordle.setImage(randomize("http://thecatapi.com/api/images/get?format=src&type=png"));
                 Objects.requireNonNull(guild.getDefaultChannel()).sendMessageEmbeds(wordle.build()).queue();
             }
         },
