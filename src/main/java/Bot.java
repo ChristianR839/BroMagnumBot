@@ -40,4 +40,9 @@ public class Bot {
             e.printStackTrace();
         }
     }
+
+    public void disconnect() {
+        jda.shutdown();
+        System.out.println("Bot disconnected from servers");
+    }
 }
