@@ -5,6 +5,11 @@ public class ConsoleOut extends OutputStream {
 
     private final JTextArea textArea;
 
+    /**
+     * Creates a new ConsoleOut, which is an extension of OutputStream.
+     * The only difference is an override on the write(int) method.
+     * @param textArea The textArea to apply this change to.
+     */
     public ConsoleOut(JTextArea textArea) {
         this.textArea = textArea;
     }

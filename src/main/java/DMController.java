@@ -18,28 +18,58 @@ public class DMController extends ListenerAdapter {
     private boolean flagGot = false;
     private final Resources r = new Resources();
 
+    /**
+     * Creates a new DMController when communication is first initiated with a user.
+     * This holds all conversation data for that user.
+     * @param channel The channel which the bot and the new user will use to communicate.
+     */
     public DMController(PrivateChannel channel) {
         this.user = channel.getUser();
         this.channel = channel;
         System.out.println("Communication initiated with " + user.getAsTag());
     }
 
+    /**
+     * Checks if a user matches the user associated with this instance of DMController.
+     * @param user The user to check.
+     * @return True if the users are the same.
+     */
     public boolean userMatch(User user) {
         return this.user.equals(user);
     }
 
+    /**
+     * Sets a string as the most recently-received message.
+     * @param message The string to set.
+     */
     public void setMessage(String message) {
         sent = message;
     }
 
+    /**
+     * Generates a random integer that is within the specified bounds (inclusive).
+     * @param min The minimum value of the random integer.
+     * @param max The maximum value of the random integer.
+     * @return A random integer that is within the specified bounds (inclusive).
+     */
     public int random(int min, int max) {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
 
+    /**
+     * Checks if the most recently-received message has a specific string in it.
+     * @param query The string to search for.
+     * @return True if the most recently-received message has the query in it.
+     */
     public boolean sentHas(String query) {
         return (sent.toLowerCase().contains(query) || sent.toLowerCase().contains(query + "s"));
     }
 
+    /**
+     * Sends a message to the user associated with this instance of DMController in the private channel
+     * between the user and the bot.
+     * @param message The message to send.
+     */
     public void sendMessage(String message){
         try {
             channel.sendTyping().queue();
@@ -52,6 +82,10 @@ public class DMController extends ListenerAdapter {
         }
     }
 
+    /**
+     * Generates a random date between 1 January 1979 and the present (excluding 29 February).
+     * @return A random date  as a formatted string (yyyy/mm/dd).
+     */
     public String comicDate() {
         int year = random(1979, LocalDate.now().getYear());
         int month = random(1, 12);

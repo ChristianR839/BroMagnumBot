@@ -17,11 +17,14 @@ public class Main {
         } else {
             Scanner scanner = new Scanner(System.in);
             Bot bot = new Bot();
+            bot.connect();
             while (true) {
                 String input = scanner.nextLine();
                 if (input.equals("bm-stop")) {
                     bot.disconnect();
                     System.exit(0);
+                } else if (input.equals("bm-restart")) {
+                    bot.restart();
                 } else {
                     System.out.println("Command '" + input + "' not found");
                 }
