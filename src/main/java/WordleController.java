@@ -112,7 +112,8 @@ public class WordleController extends ListenerAdapter {
             replaceSelected(wordleCode, completeSymbol + wordleCode);
             return "https://mywordle.strivemath.com/?word=" + wordleCode;
         } else {
-            return "ERROR: No more custom Wordles have been provided!";
+            System.out.println("[APP] ERROR: No more custom Wordles have been provided!");
+            return "-";
         }
     }
 
