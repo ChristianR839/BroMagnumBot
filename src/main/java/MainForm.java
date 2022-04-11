@@ -83,7 +83,7 @@ public class MainForm extends JFrame {
      * Disconnects the bot from the servers and shuts down the program.
      */
     private void onClose() {
-        System.out.println("\n[APP] Shutting down...");
+        System.out.println("[APP] Shutting down...");
         bot.disconnect();
         dispose();
         System.exit(0);

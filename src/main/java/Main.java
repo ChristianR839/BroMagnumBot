@@ -26,13 +26,13 @@ public class Main {
             Bot bot = new Bot(r);
             bot.connect();
 
-            System.out.println("[TIP] Use 'bm-restart' to disconnect from and reconnect to servers.");
-            System.out.println("[TIP] Use 'bm-wordle' to create a new input file for wordles.");
+            System.out.println("[CMD] Use 'bm-restart' to disconnect from and reconnect to servers.");
+            System.out.println("[CMD] Use 'bm-wordle' to create a new input file for wordles.");
 
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {
                 try {
                     Thread.sleep(200);
-                    System.out.println("\n[APP] Shutting down...");
+                    System.out.println("[APP] Shutting down...");
                     scan.set(false);
                     bot.disconnect();
                 } catch (InterruptedException e) {
