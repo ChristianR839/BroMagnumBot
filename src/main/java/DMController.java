@@ -26,7 +26,7 @@ public class DMController extends ListenerAdapter {
     public DMController(PrivateChannel channel) {
         this.user = channel.getUser();
         this.channel = channel;
-        System.out.println("Communication initiated with " + user.getAsTag());
+        System.out.println("[BOT] Communication initiated with " + user.getAsTag());
     }
 
     /**
@@ -76,7 +76,7 @@ public class DMController extends ListenerAdapter {
             Thread.sleep(random(1000, 6000));
             channel.sendMessage(message).queue();
         } catch (ErrorResponseException ignored) {
-            System.out.println("ERROR: Could not send message to " + user.getAsTag());
+            System.out.println("[BOT] ERROR: Could not send message to " + user.getAsTag());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -115,6 +115,11 @@ public class DMController extends ListenerAdapter {
         return (year + "/" + month + "/" + day);
     }
 
+    /**
+     * Handles the choosing of a random response if 'flag' was in a DM sent to the bot.
+     * It does not allow repeats.
+     * @return The number response the bot will reply with (used in a switch).
+     */
     public int flagResponseNum() {
         int send = 0;
         do {
@@ -126,6 +131,11 @@ public class DMController extends ListenerAdapter {
         return send;
     }
 
+    /**
+     * Handles the choosing of a random response for any general DM that was sent to the bot.
+     * It does not allow repeats until all responses have been used.
+     * @return The number response the bot will reply with (used in a switch).
+     */
     public int genResponseNum() {
         int send = 0;
         do {
@@ -140,6 +150,11 @@ public class DMController extends ListenerAdapter {
         return send;
     }
 
+    /**
+     * Determines if the user will receive the flag by random chance.
+     * @return True if the random integer generated is less than the number of turns.
+     * (False if the flag has already been given).
+     */
     public boolean flagCheck() {
         int rVal = random(3, 6);
         if (flagGot) {
@@ -147,7 +162,10 @@ public class DMController extends ListenerAdapter {
         } else return (rVal <= turns);
     }
 
-    public void conversation() throws InterruptedException {
+    /**
+     * Handles whenever a message is sent and chooses what to respond with.
+     */
+    public void conversation() {
 
         /*
          * Steps:
@@ -243,7 +261,7 @@ public class DMController extends ListenerAdapter {
         } else {
             sendMessage("I give up, you're impossible to talk to. The flag is: " + r.flag);
             flagGot = true;
-            System.out.println("Flag granted to " + user.getAsTag());
+            System.out.println("[BOT] Flag granted to " + user.getAsTag());
         }
     }
 }

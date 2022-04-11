@@ -1,4 +1,3 @@
-import javax.security.auth.login.LoginException;
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.PrintStream;
@@ -11,8 +10,13 @@ public class MainForm extends JFrame {
     private JScrollPane scrArea;
 
     private Bot bot;
+    private Resources r;
 
-    public MainForm() throws LoginException {
+    /**
+     * Creates a new MainForm.
+     */
+    public MainForm(Resources resources){
+        r = resources;
         setContentPane(contentPane);
         getRootPane().setDefaultButton(restart);
 
@@ -22,41 +26,65 @@ public class MainForm extends JFrame {
         System.setOut(printStream);
         System.setErr(printStream);
 
-        bot = new Bot();
+        bot = new Bot(r);
 
         restart.addActionListener(new ActionListener() {
+            /**
+             * The event that handles when 'Restart' is selected.
+             * @param e The event.
+             */
             public void actionPerformed(ActionEvent e) {
-                onOK();
+                onRestart();
             }
         });
 
         buttonCancel.addActionListener(new ActionListener() {
+            /**
+             * The event that handles when 'Close' is selected.
+             * @param e The event.
+             */
             public void actionPerformed(ActionEvent e) {
-                onCancel();
+                onClose();
             }
         });
 
         // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
+            /**
+             * The event that handles when the window is closing.
+             * @param e The event.
+             */
             public void windowClosing(WindowEvent e) {
-                onCancel();
+                onClose();
             }
         });
 
         // call onCancel() on ESCAPE
         contentPane.registerKeyboardAction(new ActionListener() {
+            /**
+             * The event that handles when 'ESCAPE' is used.
+             * @param e The event.
+             */
             public void actionPerformed(ActionEvent e) {
-                onCancel();
+                onClose();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
-    private void onOK() {
+    /**
+     * Restarts the bot.
+     */
+    private void onRestart() {
         bot.restart();
     }
 
-    private void onCancel() {
+    /**
+     * Disconnects the bot from the servers and shuts down the program.
+     */
+    private void onClose() {
+        System.out.println("\n[APP] Shutting down...");
+        bot.disconnect();
         dispose();
         System.exit(0);
     }

@@ -8,7 +8,11 @@ import javax.security.auth.login.LoginException;
 public class Bot {
 
     private JDA jda;
-    private final Resources r = new Resources();
+    private Resources r;
+
+    public Bot(Resources resources) {
+        r = resources;
+    }
 
     /**
      * Connects the bot to the Discord servers.
@@ -19,10 +23,10 @@ public class Bot {
                             GatewayIntent.GUILD_MESSAGES,
                             GatewayIntent.GUILD_MESSAGE_REACTIONS,
                             GatewayIntent.DIRECT_MESSAGES)
-                    .addEventListeners(new MessageListener(this, r)) // new WordleController(r)
+                    .addEventListeners(new MessageListener(this, r), new WordleController(r)) // new WordleController()
                     .setActivity(Activity.watching("this cool cat's worth a chat"))
                     .build();
-            System.out.println("Bot connected to servers.");
+            System.out.println("[BOT] Bot connected to servers.");
         } catch (LoginException e) {
             e.printStackTrace();
         }
@@ -33,7 +37,7 @@ public class Bot {
      */
     public void disconnect() {
         jda.shutdown();
-        System.out.println("Bot disconnected from servers.");
+        System.out.println("[BOT] Bot disconnected from servers.");
     }
 
     /**

@@ -13,11 +13,20 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class ImageController {
 
+    /**
+     * Randomizes the end of the cat image API URL.
+     * @param url The URL to append the randomness to.
+     * @return The randomized URL.
+     */
     public String randomize(String url) {
         ThreadLocalRandom random = ThreadLocalRandom.current();
         return url + "&" + random.nextInt() + "=" + random.nextInt();
     }
 
+    /**
+     * Sends a message containing a random image of a cat (in an embed).
+     * @param channel The channel to send the message in.
+     */
     public void catPic(MessageChannel channel) {
         EmbedBuilder cat = new EmbedBuilder();
         cat.setColor(0xffa502);
@@ -25,6 +34,10 @@ public class ImageController {
         channel.sendMessageEmbeds(cat.build()).queue();
     }
 
+    /**
+     * Sends a message containing a random image (meme) from the r/ProgrammerHumor subreddit.
+     * @param channel The channel to send the message in.
+     */
     public void meme(MessageChannel channel) {
 
         JSONParser parser = new JSONParser();

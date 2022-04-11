@@ -28,15 +28,30 @@ public class MessageListener extends ListenerAdapter {
     private final Bot bot;
     private final Resources r;
 
-    public MessageListener(Bot bot, Resources r) {
+    /**
+     * Creates a new MessageListener.
+     * @param bot The bot JDA.
+     * @param resources The Resources for this bot.
+     */
+    public MessageListener(Bot bot, Resources resources) {
         this.bot = bot;
-        this.r = r;
+        this.r = resources;
     }
 
+    /**
+     * Generates a random integer that is within the specified bounds (inclusive).
+     * @param min The minimum value of the random integer.
+     * @param max The maximum value of the random integer.
+     * @return A random integer that is within the specified bounds (inclusive).
+     */
     public int random(int min, int max) {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
 
+    /**
+     * Generates a random date between 1 January 1979 and the present (excluding 29 February).
+     * @return A random date  as a formatted string (yyyy/mm/dd).
+     */
     public String comicDate() {
         int year = random(1979, LocalDate.now().getYear());
         int month = random(1, 12);
@@ -71,6 +86,11 @@ public class MessageListener extends ListenerAdapter {
         return url + "&" + random.nextInt() + "=" + random.nextInt();
     }
 
+    /**
+     * The event that handles receiving and responding to messages.
+     * Private messages are diverted to DMController for handling.
+     * @param event The event.
+     */
     public void onMessageReceived(MessageReceivedEvent event) {
         Message msg = event.getMessage();
         User sender = msg.getAuthor();
@@ -81,7 +101,7 @@ public class MessageListener extends ListenerAdapter {
             channel.sendMessage("Pong!") /* => RestAction<Message> */
                     .queue(response /* => Message */ -> response.editMessageFormat("Pong: %d ms", System.currentTimeMillis() - time).queue());
         } else if (!msg.isFromGuild() && msg.getContentRaw().equals("!restart_bro")) {
-            System.out.println("Bot was remotely restarted by " + sender.getAsTag());
+            System.out.println("[BOT] Bot was remotely restarted by " + sender.getAsTag());
             bot.restart();
         } else if (!msg.isFromGuild() && msg.getContentRaw().equals("ratio") && Objects.equals(sender, event.getJDA().getSelfUser())) {
             MessageChannel channel = event.getChannel();
@@ -92,20 +112,12 @@ public class MessageListener extends ListenerAdapter {
                 DMController newDM = new DMController(msg.getPrivateChannel());
                 dmControllerList.add(newDM);
                 newDM.setMessage(msg.getContentRaw());
-                try {
-                    newDM.conversation();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                newDM.conversation();
             } else {
                 for (DMController dm : dmControllerList) {
                     if (dm.userMatch(sender)) {
                         dm.setMessage(msg.getContentRaw());
-                        try {
-                            dm.conversation();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+                        dm.conversation();
                         break;
                     }
                 }

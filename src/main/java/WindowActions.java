@@ -3,6 +3,9 @@ import java.awt.*;
 
 public class WindowActions {
 
+    /**
+     * Sets the look and feel of the application GUI to the system default.
+     */
     public void setLookAndFeel() {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -12,6 +15,10 @@ public class WindowActions {
         }
     }
 
+    /**
+     * Centres an application window on the screen.
+     * @param frame The application window to centre.
+     */
     public static void centreWindow(JFrame frame) {
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
@@ -19,6 +26,10 @@ public class WindowActions {
         frame.setLocation(x, y);
     }
 
+    /**
+     * Displays an application window with pre-determined settings.
+     * @param frame The application window to display.
+     */
     public void displayWindow(JFrame frame) {
         frame.setTitle("Bro Magnum");
         frame.setResizable(false);
