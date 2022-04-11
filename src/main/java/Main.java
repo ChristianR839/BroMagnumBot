@@ -26,8 +26,8 @@ public class Main {
             Bot bot = new Bot(r);
             bot.connect();
 
-            System.out.println("[CMD] Use 'bm-restart' to disconnect from and reconnect to servers.");
-            System.out.println("[CMD] Use 'bm-wordle' to create a new input file for wordles.");
+            System.out.println("[APP] Use 'bm-restart' to disconnect from and reconnect to servers.");
+            System.out.println("[APP] Use 'bm-wordle' to create a new input file for wordles.");
 
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {
                 try {
