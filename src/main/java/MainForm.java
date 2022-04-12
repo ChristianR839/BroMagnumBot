@@ -27,6 +27,7 @@ public class MainForm extends JFrame {
         System.setErr(printStream);
 
         bot = new Bot(r);
+        bot.connect();
 
         restart.addActionListener(new ActionListener() {
             /**

@@ -125,10 +125,12 @@ public class MessageListener extends ListenerAdapter {
         } else if (msg.getContentRaw().equals("!!new_feats_message!!") && !Objects.equals(sender, event.getJDA().getSelfUser())) {
             msg.delete().queue();
             MessageChannel channel = event.getChannel();
-            channel.sendMessage("hey, @everyone, just want to let you know that i have some new commands!\n"
+            channel.sendMessage(
+              "hey, @everyone, just want to let you know that i have some new commands!\n"
                 + "   • !cat - receive a random image of a cat\n"
                 + "   • !meme - receive a random meme from the r/ProgrammerHumor subreddit\n"
-                + "   • !comic - receive a random comic of your favorite lasagna-loving monday-hating feline").queue();
+                + "   • !comic - receive a random comic of your favorite lasagna-loving monday-hating feline\n"
+                + "also, look forward to daily walldles (custom wordles for CS 4401) at noon!").queue();
         } else if (msg.getContentRaw().equals("!comic") && !Objects.equals(sender, event.getJDA().getSelfUser())) {
             String url = "https://www.gocomics.com/garfield/" + comicDate();
             MessageChannel channel = event.getChannel();
