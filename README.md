@@ -14,7 +14,7 @@ Bro Magnum is a Discord bot that utilizes the JDA (Java Discord API) (https://gi
 
 ## Creating a Discord Bot
 
-1.  Navigate to the Discord Developer Portal > Applications page (https://discord.com/developers/applications). This will require logging in with a Discord account. If you do not have one, create one to proceed
+1.  Navigate to the `Discord Developer Portal > Applications` page (https://discord.com/developers/applications). This will require logging in with a Discord account. If you do not have one, create one to proceed
       
 2.  Select the `New Application` button at the top right of the window next to your user icon
 
@@ -77,7 +77,7 @@ Bro Magnum is a Discord bot that utilizes the JDA (Java Discord API) (https://gi
             String wordleFile = "<filename>";
           }
      
-      6d. Populate the `token`, `flag`, and `filename` fields with values that are appropriate for your use. See ***Creating a Discord Bot*** for more information about obtaining your bot's token
+      6d. Populate the `token`, `flag`, and `filename` fields with values that are appropriate for your use. See [***Creating a Discord Bot***](https://github.com/ChristianR839/BroMagnumBot#creating-a-discord-bot) for more information about obtaining your bot's token
       
       6e. Build the project to assure that this new file has been created and implemented correctly
 
@@ -111,7 +111,7 @@ Bro Magnum is a Discord bot that utilizes the JDA (Java Discord API) (https://gi
           [JDA MainWS-WriteThread] INFO WebSocketClient - Connected to WebSocket
           [JDA MainWS-ReadThread] INFO JDA - Finished Loading!
           
-      See ***Running in the Commadn Line*** for more information about commands
+      See [***Running in the Command Line***](https://github.com/ChristianR839/BroMagnumBot#running-in-the-command-line) for more information about commands
       
       8c. For GUI users: If this window appears and console output declares that the bot has been connected to servers, the program has been set up successfully:
       
@@ -142,7 +142,7 @@ Bro Magnum is a Discord bot that utilizes the JDA (Java Discord API) (https://gi
 
           ...\BroMagnumBot-Tutorial\out\artifacts\BroMagnum_jar\BroMagnumBot.jar
           
-9. For command line users: See ***Running in the Command Line*** to test for functionality
+9. For command line users: See [***Running in the Command Line***](https://github.com/ChristianR839/BroMagnumBot#running-in-the-command-line) to test for functionality
           
 10. For GUI users: open the executable jar to test that it runs. If this window appears, the executable jar has been created successfully:
 
@@ -291,4 +291,4 @@ I will then include the string after `?word=` in the URL as a line in the wordle
 
 7. The bot will join the server you direct it to and, as long as it is online, will fulfill its purpose
 
-**Note:** If you want the existence of Bro Magnum in your server to be a secret, be sure to change the System Messages Channel on your server *OR* disable the "Send a random welcome message when someone joins the server" setting. Both options can be found at Your Server > Server Settings > Overview > System Messages Channel
+**Note:** If you want the existence of Bro Magnum in your server to be a secret, be sure to change the System Messages Channel on your server *OR* disable the "Send a random welcome message when someone joins the server" setting. Both options can be found at `Your Server > Server Settings > Overview > System Messages Channel`
